@@ -666,7 +666,7 @@ workerBatchtools <- function(redisdir, mem.available = Inf, walltime.available =
       debugprint("Running with ordinary timeout %.3fs", timeout)
       status <- job$session$poll_process(round(timeout * 1000))
       debugprint("Polling end; status: %s", status)
-      response <- status != "timeout"
+      response <- status == "timeout"
     }
     if (!response) killWorker(job)
     return(response)
